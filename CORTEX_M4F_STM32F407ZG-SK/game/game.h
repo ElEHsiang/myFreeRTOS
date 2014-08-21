@@ -16,4 +16,7 @@ GAME_Update();
 void
 GAME_Render();
 
+void
+GAME_SwapLayer();
+
 #endif

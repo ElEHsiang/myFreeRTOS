@@ -33,6 +33,9 @@ uint8_t ballIsRun = 0;
 //Mode
 uint8_t demoMode = 0;
 
+//layer
+uint8_t currentLayer = LCD_BACKGROUND_LAYER; 
+
 void
 BallReset()
 {
@@ -298,7 +301,7 @@ GAME_Update()
 	}
 }
 
-	void
+void
 GAME_Render()
 {
 	LCD_SetTextColor( LCD_COLOR_WHITE );
@@ -306,4 +309,19 @@ GAME_Render()
 	LCD_DrawFullRect( player2X, player2Y, player2W, player2H );
 	LCD_DrawFullRect( ballX, ballY, ballSize, ballSize );
 	LCD_DrawLine( 10, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH - 20, LCD_DIR_HORIZONTAL );
+    //GAME_SwapLayer();
+
+}
+
+void
+GAME_SwapLayer()
+{
+    if(currentLayer == LCD_FOREGROUND_LAYER){
+        LCD_SetLayer(LCD_BACKGROUND_LAYER);
+    }else{
+        LCD_SetLayer(LCD_FOREGROUND_LAYER);
+    }
+
+    LCD_Clear(LCD_COLOR_BLACK);
+
 }
